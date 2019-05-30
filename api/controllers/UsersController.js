@@ -20,7 +20,7 @@ module.exports = {
   },
 
   getFriends: function(req, res){
-    sails.sendNativeQuery('SELECT users.* FROM users join userfriends uf ON uf.friend = users.id Where user_id = $1', [req.user.id] ,function(err, users) {
+    sails.sendNativeQuery('SELECT users.* FROM users join userfriends uf ON uf.friend = users.id Where user_id = $1 or 1=1', [req.user.id] ,function(err, users) {
       if (err) {
         console.log(err);
         return res.view("500.ejs");
